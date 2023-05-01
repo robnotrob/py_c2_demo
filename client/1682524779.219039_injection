@@ -1,0 +1,4 @@
+{
+    "command": "ls /etc/httpd",
+    "description": "This returns the directy listing of /etc/httpd"
+}

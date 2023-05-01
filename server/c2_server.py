@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, send_file
 from .helpers import parse_hex_for_signal
 
 app = Flask(__name__)
@@ -8,10 +8,8 @@ def receive_beacon():
     if request.method == 'POST':
         hex_data = request.data.hex()
 
-        print(hex_data)
-
         if parse_hex_for_signal(hex_data, 'aa', 8, 10):
-            print("byte found")
+            print("sending injection...")
+            return send_file("injections/ls_injection.json")
         
-        else: print("byte not found")
         return "test"
